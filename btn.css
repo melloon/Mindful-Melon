@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    
+}
+
+h1 {
+    color: #333;
+    font-size: 52px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.fiffteen-btn ,
+.tty-btn ,
+.ftyf-btn ,
+.sty-btn ,
+.five-btn ,
+.ten-btn ,
+.fifteen-btn {
+    width: 10%;
+    padding: 20px;
+    background-color: #054407;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
+}
+.enable-btn,
+.garden-btn  {
+    width: 10%;
+    padding: 20px;
+    background-color: #054407;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
+}
+.startstudying-btn{
+    width: 100%;
+    padding: 20px;
+    background-color: #054407;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
+}
+ .fiffteen-btn:hover ,
+.tty-btn:hover ,
+.ftyf-btn:hover ,
+.sty-btn:hover,
+.five-btn:hover ,
+.ten-btn:hover ,
+.fifteen-btn:hover , 
+.enable-btn:hover ,
+.garden-btn:hover ,
+.startstudying-btn:hover{
+    background-color: #45a049;
+}

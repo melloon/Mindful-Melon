@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="..\time\time.css">
+<head>
+<link rel="stylesheet" href="..\btn.css">
+</head>
 
 
 <body>
     <h1>
-        How Long would you like to study for
+        How long would you like to study for?
        
     </h1>
-     <button type = "15" class = "ft-btn" id = "ftBtn">
+    <div class = "btn-group"> 
+        <button type = "button" class = "fiffteen-btn" id = "ftBtn">
             15 
         </button>
-     <script> 
-            const btn = document.getElementById("ftBtn");
+        <script> 
+            const btn = document.getElementById("fiffteenBtn");
             btn.addEventListener("click", function(e){
-                console.log(""); <!--declare time-->
+                console.log("");
             });
         </script>
 
-        <button type = "30" class = "tty-btn" id = "30Btn">
+        <button type = "button" class = "tty-btn" id = "ttyBtn">
             30 
         </button>
         <script> 
@@ -27,7 +30,7 @@
             });
         </script>
 
-        <button type = "45" class = "ftyf-btn" id = "45Btn">
+        <button type = "button" class = "ftyf-btn" id = "ftyfBtn">
             45 
         </button>
         <script> 
@@ -37,7 +40,7 @@
             });
         </script>
 
-        <button type = "60" class = "sty-btn" id = "60Btn">
+        <button type = "button" class = "sty-btn" id = "styBtn">
             60 
         </button>
         <script> 
@@ -46,11 +49,14 @@
                 console.log("");
             });
         </script>
+        </div>
+        
     <h1>
-        How Long would you like your break time for 
+        How long would do you want your break to be?
         
     </h1>
-     <button type = "5" class = "five-btn" id = "fiveBtn">
+    <div class = "btn-group">
+     <button type = "button" class = "five-btn" id = "fiveBtn">
             5 
         </button>
         <script> 
@@ -60,7 +66,7 @@
             });
         </script>
 
-        <button type = "10" class = "ten-btn" id = "tenBtn">
+        <button type = "button" class = "ten-btn" id = "tenBtn">
             10 
         </button>
         <script> 
@@ -70,7 +76,7 @@
             });
         </script>
 
-        <button type = "15" class = "fifteen-btn" id = "fifteenBtn">
+        <button type = "button" class = "fifteen-btn" id = "fifteenBtn">
             15 
         </button>
         <script> 
@@ -79,6 +85,6 @@
                 console.log("");
             });
         </script>
-
+    </div>
         
 </body>
