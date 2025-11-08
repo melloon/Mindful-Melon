@@ -2,7 +2,7 @@ let timerMinutes = 1;
 let timerSeconds = timerMinutes * 60;
 const countdownElement = document.getElementById('timer');
 
-setInterval(countdownTimer, 1000); //calls countdownTimer every second
+const timerInterval = setInterval(countdownTimer, 1000); //calls countdownTimer every second
 
 function countdownTimer() {
     let minutes = Math.floor(timerSeconds/60);
@@ -16,6 +16,7 @@ function countdownTimer() {
     timerSeconds--;
     if (timerSeconds < 0){
         console.log("Time's up!");
-        clearInterval(countdownTimer); //stops the timer
+        clearInterval(timerInterval); //stops the timer
+        return;
     }
 }
