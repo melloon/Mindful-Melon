@@ -18,7 +18,7 @@ fetch("https://zenquotes.io/api/random")
   .then(data => {
     const quote = data[0].q;
     const author = data[0].a;
-    document.getElementById("quote").innerText = `"${quote}" — ${author}`;
+    document.getElementById("quote").innerText = `"${quote}" - ${author}`;
   })
   // 4. If the API fails, pick a random backup quote
   .catch(() => {
