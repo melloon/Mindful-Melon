@@ -2,7 +2,9 @@
 const backupQuotes = [
   "Stay focused. You got this.",
   "Small steps every day lead to big results.",
-  "Your attention is your power."
+  "Your attention is your power.",
+  "Awesome grades in sight",
+  "Crushing it"
   
 ];
 
