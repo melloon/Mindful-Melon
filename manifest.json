@@ -1,0 +1,14 @@
+{
+    "name": "Mindful Melon",
+    "description": "A productivity extension. A GeauxHack 2025 project",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_icon": "Images/HappyMelon.png"
+    },
+    "icons": {
+        "16": "Images/HappyMelon.png",
+        "48": "Images/HappyMelon.png",
+        "128": "Images/Mindful Melon.png"
+    }
+}
