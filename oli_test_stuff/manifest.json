@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name" : "Test Extension",
+    "description": "This is just to Test the Process of Making an Extension",
+    "version" : "1.0",
+    "action" : {
+        "deafult_popup" : "hello.html",
+        "default_icon" : "icons/hello_extensions.png"
+    }
+}
