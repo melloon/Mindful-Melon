@@ -1,0 +1,13 @@
+{
+    "name": "Mindful Melon",
+    "description": "An extension made by Team Goofy Goober for Geaux Hack 2025",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "garden.html"
+    },
+    "permissions": [
+        "activeTab"
+    ]
+
+}
