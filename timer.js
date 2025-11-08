@@ -11,7 +11,7 @@ function countdownTimer() {
     if (seconds < 10) {
         seconds = '0' + seconds; //adding a leading zero
     }
-    //countdownElement.innerHTML = minutes + ':' + seconds; //display time
+    countdownElement.innerHTML = minutes + ':' + seconds; //display time
     console.log(minutes + ':' + seconds);
     timerSeconds--;
     if (timerSeconds < 0){
