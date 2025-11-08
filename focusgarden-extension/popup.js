@@ -24,3 +24,18 @@ fetch("https://zenquotes.io/api/random")
   .catch(() => {
     document.getElementById("quote").innerText = getRandomBackupQuote();
   });
+
+  const audio = document.getElementById("lofi");
+        const btn = document.getElementById("toggleMusic");
+
+            btn.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play().catch(err => {
+                        console.log("Audio play blocked until user interacts.", err);
+                    });
+                    btn.innerText = "Pause Music";
+                } else {
+                    audio.pause();
+                    btn.innerText = "Chill Vibes";
+                }
+            });
