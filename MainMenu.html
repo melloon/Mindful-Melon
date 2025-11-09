@@ -31,6 +31,24 @@
       text-align: center;
     }
 
+    #toggleMusic {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      background-color: #054407;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    #toggleMusic:hover {
+      background-color: #45a049;
+    }
+
     .btn-group {
       display: grid;
       /* changed only for 2x2 layout */
@@ -83,6 +101,8 @@
 </head>
 
 <body>
+  <button id="toggleMusic">🎵 Chill Vibes</button>
+
   <img src="Images/Mindful Melon(Popup) (2).png" alt="The baby melon" width="350" height="307">
 
 
@@ -102,6 +122,27 @@
       <button type="button" class="enable-btn">Enable Sites</button>
     </a>
   </div>
+
+  <script>
+    // --- Music control (same logic as popup.js in code one) ---
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("toggleMusic");
+
+      chrome.storage.local.get(["isMusicPlaying"], (result) => {
+        if (result.isMusicPlaying) {
+          btn.innerText = "🔇 Pause Music";
+        } else {
+          btn.innerText = "🎵 Chill Vibes";
+        }
+      });
+
+      btn.addEventListener("click", () => {
+        chrome.runtime.sendMessage({ type: "popup-toggle" });
+        btn.innerText = btn.innerText === "🎵 Chill Vibes" ? "🔇 Pause Music" : "🎵 Chill Vibes";
+      });
+    });
+  </script>
+
 
 </body>
 
