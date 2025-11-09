@@ -11,5 +11,22 @@
         "16": "Images/HappyMelon.png",
         "48": "Images/HappyMelon.png",
         "128": "Images/Mindful Melon.png"
-    }
+    },
+    "permissions": [
+        "storage",
+        "offscreen"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "music/*.mp3"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
 }
