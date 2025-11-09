@@ -40,7 +40,7 @@
       margin: 40px auto 0 auto;
     }
 
-    .fiffteen-btn,
+    .streak-btn,
     .tty-btn,
     .ftyf-btn,
     .sty-btn,
@@ -61,7 +61,7 @@
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
     }
 
-    .fiffteen-btn:hover,
+    .streak-btn:hover,
     .tty-btn:hover,
     .ftyf-btn:hover,
     .sty-btn:hover,
@@ -84,9 +84,17 @@
   <img src="Images/Mindful Melon(Popup) (2).png" alt="The baby melon" width="350" height="307">
 
   <div class="btn-group">
+
     <button type="button" class="garden-btn">Garden</button>
+    <script>
+      const gardenBtn = document.getElementById("gardenBtn");
+      gardenBtn.addEventListener("click", function(e){
+        window.location.href = "Garden.html";
+      });
+    </script>
+
     <button type="button" class="startstudying-btn">Study Session</button>
-    <button type="button" class="fiffteen-btn">Points</button>
+    <button type="button" class="streak-btn">Streak</button>
     <button type="button" class="enable-btn">Enable Sites</button>
   </div>
 </body>

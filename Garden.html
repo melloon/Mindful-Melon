@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="..\btn.css">
+  <style>
+    body {
+      width: 700px;
+      height: 575px;
+      text-align: center;
+      background-image: url("Images/SunnyBackground.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    img {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Welcome to Your Garden 🌱</h1>
+  <img src="Images/Mindful Melon(Popup) (2).png" alt="The baby melon" width="350" height="307">
+
+  <div class="btn-group">
+    <button type="button" class="enable-btn" id="backBtn">Back</button>
+    <script>
+      const backBtn = document.getElementById("backBtn");
+      backBtn.addEventListener("click", function(e){
+        window.location.href = "index.html";
+      });
+    </script>
+  </div>
+</body>
+</html>
