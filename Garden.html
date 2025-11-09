@@ -111,20 +111,28 @@
   <div id="imageContainer">
         <!-- The image will be added here by JavaScript -->
   </div>
-    <script>
-        studytime = 
-        time = studytime/tabtimetracker;
+  <script>
+const studytimeString = localStorage.getItem('savedStudyTime');
+
+let studytime;
+if (studytimeString) {
+    studytime = parseFloat(studytimeString); 
+    time = studytime / tabtimetracker; 
+} else {
+    studytime = 0; 
+}
+        time_elsewhere = studytime/tabtimetracker;
         water = false;
          pet = false;
-        if (time <= .50){
+        if (time_elsewhere <= .50){
             melonstate = 0;
             return deadImage;
         }
-        else if (time < .70){
+        else if (time.elsewhere < .70){
             melonstate = 1;
             return semideadImage;
         }
-        else if (time < .90){
+        else if (time.elsewhere < .90){
             melonstate = 2;
             return sickImage;
         }
@@ -154,13 +162,13 @@
     </script>
     <script>    
         if (water == true){
-            if (time >= .90){
+            if (time.elsewhere >= .90){
                 return healthywaterImage;
             }
-            else if (time > .70){
+            else if (time.elsewhere > .70){
                 return sickwaterImage;
             }
-            else if (time > .50){
+            else if (time.elsewhere > .50){
                 return semideadwaterImage;
             }
             
@@ -186,10 +194,10 @@
             if (time >= .90){
                 return healthypetImage;
             }
-            else if (time > .70){
+            else if (time.elsewhere > .70){
                 return sickpetImage;
             }
-            else if (time > .50){
+            else if (time.elsewhere > .50){
                 return semideadpetImage;
             }
         }
