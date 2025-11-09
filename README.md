@@ -1,2 +1,2 @@
-# TeamGoofyGooberGeauxHack2025
+# Mindful Melon
 
