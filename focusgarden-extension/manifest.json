@@ -1,0 +1,42 @@
+
+{
+  "manifest_version": 3,
+  "name": "FocusGarden",
+  "version": "1.0",
+  "description": "Grow your focus plant by staying attentive",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "offscreen",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://zenquotes.io/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+   "web_accessible_resources": [
+    {
+      "resources": ["music/*.mp3"],
+      "matches": ["<all_urls>"]
+    }
+   ]
+}
+
+
