@@ -1,0 +1,8 @@
+  .my-element {
+        background-image: "Images/Mindful Melon(Popup).png";
+        width: 300px; 
+        height: 200px;
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-position: center; 
+    }
