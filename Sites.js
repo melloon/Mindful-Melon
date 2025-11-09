@@ -1,20 +1,19 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  
-//Quotes
-  const quoteElement = document.querySelector("h1"); 
+ 
+  const quoteElement = document.querySelector("h1"); // Finds the <h1> in Sites.html
+  if (quoteElement) { // Check if it exists before trying to use it
+    fetch("https://zenquotes.io/api/random")
+      .then(res => res.json())
+      .then(data => {
+        const quote = data[0].q;
+        const author = data[0].a;
+        quoteElement.innerText = `"${quote}" - ${author}`;
+      })
+      .catch(() => {
+        quoteElement.innerText = '"Stay focused. You got this."'; // Backup
+      });
+  }
 
-  fetch("https://zenquotes.io/api/random")
-    .then(res => res.json())
-    .then(data => {
-      const quote = data[0].q;
-      const author = data[0].a;
-      quoteElement.innerText = `"${quote}" - ${author}`;
-    })
-    .catch(() => {
-      quoteElement.innerText = '"Stay focused. You got this."';
-    });
-  
   const siteInput = document.getElementById("site-input");
   const addSiteBtn = document.getElementById("add-site-btn");
   const blockedSitesList = document.getElementById("blocked-sites-list");
@@ -48,11 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const li = document.createElement("li");
       li.textContent = site;
 
-      // "Remove" Button
       const removeBtn = document.createElement("button");
       removeBtn.textContent = "Remove";
-      removeBtn.style.marginLeft = "10px"; // Adds some space
-      removeBtn.dataset.site = site; // Store the site name on the button
+      removeBtn.style.marginLeft = "10px"; 
+      removeBtn.dataset.site = site; 
 
       // Add a click listener for the new remove button
       removeBtn.addEventListener("click", async (e) => {
@@ -61,16 +59,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the current list
         const result = await chrome.storage.local.get(["blockList"]);
         const currentList = result.blockList || [];
-  
+        
+        // Create a NEW list, filtering out the site we want to remove
         const newList = currentList.filter(s => s !== siteToRemove);
         
-        // Save list in storage
+        // Save the new, shorter list back to storage
         await chrome.storage.local.set({ blockList: newList });
         
+        // Refresh the list in the popup
         loadAndDisplayBlocklist();
       });
 
-      li.appendChild(removeBtn); 
+      li.appendChild(removeBtn); // Add the remove button to the list item
 
       blockedSitesList.appendChild(li);
     });

@@ -10,7 +10,7 @@
     "icons": {
         "16": "Images/HappyMelon.png",
         "48": "Images/HappyMelon.png",
-        "128": "Images/Mindful Melon.png"
+        "128": "Images/MindfulMelon.png"
     },
     "permissions": [
         "storage",

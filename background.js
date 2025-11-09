@@ -17,82 +17,33 @@ async function ensureOffscreenDocument() {
   }
 }
 
-chrome.runtime.onInstalled.addListener(async () => {
-  const defaults = {
-    blockList: [],
-    warnings: 0,
-    sessionWarnings: 0,
-    sessionCount: 0,
-    inSession: false,
-    lastSessionCompleted: false,
-    melonDead: false,
-    isMusicPlaying: false
-  };
-
-  function updateIcon(warnings) {
-  if (warnings >= 4) chrome.action.setIcon({ path: ICONS.dead });
-  else if (warnings === 3) chrome.action.setIcon({ path: ICONS.decaying });
-  else if (warnings === 2) chrome.action.setIcon({ path: ICONS.sick });
-  else chrome.action.setIcon({ path: ICONS.happy });
-}
-
-chrome.runtime.onInstalled.addListener(async () => {
-  const defaults = {
-    warnings: 0,
-    sessionWarnings: 0,
-    sessionCount: 0,
-    inSession: false,
-    lastSessionCompleted: false,
-    melonDead: false,
-  };
-
-  const current = await chrome.storage.local.get(Object.keys(defaults));
-  const toSet = {};
-  for (const key in defaults) {
-    if (typeof current[key] === "undefined") toSet[key] = defaults[key];
-  }
-  if (Object.keys(toSet).length) await chrome.storage.local.set(toSet);
-
-  const { warnings } = await chrome.storage.local.get(["warnings"]);
-  updateIcon(warnings || 0);
-});
-
-
-
-function updateIcon(warnings) {
-  if (warnings >= 4) chrome.action.setIcon({ path: ICONS.dead });
-  else if (warnings === 3) chrome.action.setIcon({ path: ICONS.decaying });
-  else if (warnings === 2) chrome.action.setIcon({ path: ICONS.sick });
-  else chrome.action.setIcon({ path: ICONS.happy });
-}
-
-
-
-
-
-  const current = await chrome.storage.local.get(Object.keys(defaults));
-  const toSet = {};
-  for (const key in defaults) {
-    if (typeof current[key] === "undefined") toSet[key] = defaults[key];
-  }
-  if (Object.keys(toSet).length) await chrome.storage.local.set(toSet);
-
-  const { warnings } = await chrome.storage.local.get(["warnings"]);
-  updateIcon(warnings || 0);
-});
-
-
-
+// Combining Music and Timer
 chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
+  
+  // Lofi
   if (msg.type === "popup-toggle") {
     await ensureOffscreenDocument();
     chrome.runtime.sendMessage({ type: "offscreen-toggle" });
     sendResponse({ success: true });
   }
 
+  // Your Music State Reporting
   if (msg.type === "music-state-changed") {
     console.log("Saving music state:", msg.isPlaying);
     await chrome.storage.local.set({ isMusicPlaying: msg.isPlaying });
+    sendResponse({ success: true });
+  }
+
+  // Timer Start
+  if (msg.type === "start-timer") {
+    console.log("Starting timer for", msg.duration, "minutes");
+    
+    // Creating a Chrome Alarm cleaner
+    chrome.alarms.create("study-timer", {
+      delayInMinutes: msg.duration
+    });
+    
+    sendResponse({ success: true });
   }
   
   return true; // keep port open for async response
@@ -103,30 +54,47 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
 
 
 
-// This code runs every single time a tab is updated in any way.
-// Notis
+// Site blocker
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-
   if (changeInfo.status === 'complete' && tab.url) {
-    
     const result = await chrome.storage.local.get(["blockList"]);
     const blockList = result.blockList || [];
     const hostname = new URL(tab.url).hostname;
+
+    console.log("Checking page:", hostname, "Against list:", blockList);
     
     for (const siteToBlock of blockList) {
       if (hostname.includes(siteToBlock)) {
         
-    
-        // Native Chrome notification instead of like "youtube says"
+        // Cleaner chrome.notifications system
         chrome.notifications.create({
           type: "basic",
-          iconUrl: "icon48.png", // Or icon128.png
-          title: "MindfulMelon", 
+          iconUrl: "Images/HappyMelon.png", // Team Icon
+          title: "Mindful Melon",
           message: "This site is distracting and will harm your plant's growth!"
         });
         
         break; 
       }
     }
+  }
+});
+
+
+// Fixing Timer Again
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === "study-timer") {
+    console.log("Timer finished!");
+    
+    // Noti for when the timer is done
+    chrome.notifications.create({
+      type: "basic",
+      iconUrl: "Images/HappyMelon.png",
+      title: "Mindful Melon",
+      message: "Study session complete! Time to take a break."
+    });
+    
+    // Clear the alarm
+    chrome.alarms.clear("study-timer");
   }
 });

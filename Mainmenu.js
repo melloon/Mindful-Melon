@@ -1,5 +1,8 @@
-
+// Mainmenu.js
 document.addEventListener("DOMContentLoaded", () => {
+  
+  // This file ONLY controls the music button on the MainMenu.html page.
+  // All other code (quotes, timer) must be removed to prevent crashes.
 
   const btn = document.getElementById("toggleMusic");
 
