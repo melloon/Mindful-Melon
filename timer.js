@@ -1,23 +1,31 @@
-const countdownElement = document.getElementById('timer');
-const startButton = document.getElementById('startButton');
-const pauseButton = document.getElementById('pauseButton');
-const resumeButton = document.getElementById('resumeButton');
-const stopButton = document.getElementById('stopButton');
+const display = document.getElementById("timerDisplay");
 
-
-function countdownTimer() {
-    chrome.storage.local.get("timerSeconds", (data) => {
-    let timerSeconds = data.timerSeconds ?? 0;
-    const minutes = Math.floor(timerSeconds/60);
-    let seconds = timerSeconds % 60;
-
-    if (seconds < 10) {
-        seconds = '0' + seconds; //adding a leading zero
-    }
-    countdownElement.innerHTML = minutes + ':' + seconds; //display time
-    console.log(minutes + ':' + seconds);
-    });
+function updateDisplay(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const rem = seconds % 60;
+  display.textContent = `${minutes}:${rem.toString().padStart(2, "0")}`;
 }
 
-countdownTimer();
-setInterval(countdownTimer, 1000);
+// --- Button listeners ---
+document.getElementById("startButton").addEventListener("click", () => {
+  chrome.runtime.sendMessage({ action: "start" });
+});
+
+document.getElementById("pauseButton").addEventListener("click", () => {
+  chrome.runtime.sendMessage({ action: "pause" });
+});
+
+document.getElementById("resumeButton").addEventListener("click", () => {
+  chrome.runtime.sendMessage({ action: "resume" });
+});
+
+// --- Update timer display live ---
+chrome.storage.local.get("timerSeconds", (data) => {
+  if (data.timerSeconds !== undefined) updateDisplay(data.timerSeconds);
+});
+
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === "local" && changes.timerSeconds) {
+    updateDisplay(changes.timerSeconds.newValue);
+  }
+});
