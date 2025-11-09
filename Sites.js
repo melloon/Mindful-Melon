@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addSiteBtn.addEventListener("click", async () => {
     const site = siteInput.value;
-    
     if (site) {
       const result = await chrome.storage.local.get(["blockList"]);
       const blockList = result.blockList || [];
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     blockedSitesList.innerHTML = "";
     
-    // Add each site to the HTML as a list item
+    // Add each site to list 
     blockList.forEach(site => {
       const li = document.createElement("li");
       li.textContent = site;

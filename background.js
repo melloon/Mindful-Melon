@@ -1,4 +1,11 @@
 
+const ICONS = {
+  happy:    { "16": "Images/HappyMelon.png" },
+  sick:     { "16": "Images/SickMelon.PNG" },
+  decaying: { "16": "Images/DecayingMelon.PNG" },
+  dead:     { "16": "Images/DeadMelon.PNG" }
+};
+
 async function ensureOffscreenDocument() {
   const exists = await chrome.offscreen.hasDocument();
   if (!exists) {
@@ -41,6 +48,10 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
   
   return true; // keep port open for async response
 });
+// End of Music
+
+
+
 
 
 // Site blocker
