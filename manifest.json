@@ -20,8 +20,11 @@
         "scripting"
     ],
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "backgrounds.js"
     },
+    "host_permissions": [
+        "<all_urls>"
+    ],
     "web_accessible_resources": [
         {
             "resources": [

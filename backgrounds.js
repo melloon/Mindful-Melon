@@ -25,35 +25,28 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
   return true; // keep port open for async response
 });
 
-function showAlert() {
-  alert("This site is distracting and will harm your plant's growth! Get back to work!");
+function showNotification(hostname) {
+  chrome.notifications.create({
+    type: "basic",
+    iconUrl: "Images/icon128.png", // Path to your extension icon
+    title: "🌱 FocusGarden Reminder",
+    message: `The site "${hostname}" is distracting and will harm your plant's growth! Get back to work!`,
+    priority: 2
+  });
 }
 
-// This code runs every single time a tab is updated in any way.
+// === Watch tab updates and trigger notification if site is blocked ===
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
-
-  if (changeInfo.status === 'complete' && tab.url) {
-    
-    // Get the blocklist from storage, the one you saved from the popup.
+  if (changeInfo.status === "complete" && tab.url) {
     const result = await chrome.storage.local.get(["blockList"]);
     const blockList = result.blockList || [];
-    
+
     const hostname = new URL(tab.url).hostname;
-    
-    // Loop through every site in your blocklist.
+
     for (const siteToBlock of blockList) {
-      // Check if the current website's hostname includes the one from your list.
-  
       if (hostname.includes(siteToBlock)) {
-        
-        // If we find a match, inject and run our showAlert function on that tab.
-        chrome.scripting.executeScript({
-          target: { tabId: tabId }, 
-          function: showAlert       
-        });
-        
-        // Once we find a match, we can stop checking the rest of the list.
-        break; 
+        showNotification(hostname);
+        break;
       }
     }
   }
