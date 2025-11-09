@@ -36,6 +36,39 @@ chrome.runtime.onInstalled.addListener(async () => {
   else chrome.action.setIcon({ path: ICONS.happy });
 }
 
+chrome.runtime.onInstalled.addListener(async () => {
+  const defaults = {
+    warnings: 0,
+    sessionWarnings: 0,
+    sessionCount: 0,
+    inSession: false,
+    lastSessionCompleted: false,
+    melonDead: false,
+  };
+
+  const current = await chrome.storage.local.get(Object.keys(defaults));
+  const toSet = {};
+  for (const key in defaults) {
+    if (typeof current[key] === "undefined") toSet[key] = defaults[key];
+  }
+  if (Object.keys(toSet).length) await chrome.storage.local.set(toSet);
+
+  const { warnings } = await chrome.storage.local.get(["warnings"]);
+  updateIcon(warnings || 0);
+});
+
+
+
+function updateIcon(warnings) {
+  if (warnings >= 4) chrome.action.setIcon({ path: ICONS.dead });
+  else if (warnings === 3) chrome.action.setIcon({ path: ICONS.decaying });
+  else if (warnings === 2) chrome.action.setIcon({ path: ICONS.sick });
+  else chrome.action.setIcon({ path: ICONS.happy });
+}
+
+
+
+
 
   const current = await chrome.storage.local.get(Object.keys(defaults));
   const toSet = {};
