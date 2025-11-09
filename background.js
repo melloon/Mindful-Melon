@@ -24,35 +24,30 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
   
   return true; // keep port open for async response
 });
+// End of Music
 
-function showAlert() {
-  alert("This site is distracting and will harm your plant's growth! Get back to work!");
-}
 
-// This code runs every single time a tab is updated in any way.
+// Notis
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
   if (changeInfo.status === 'complete' && tab.url) {
     
-    // Get the blocklist from storage, the one you saved from the popup.
     const result = await chrome.storage.local.get(["blockList"]);
     const blockList = result.blockList || [];
-    
     const hostname = new URL(tab.url).hostname;
     
-    // Loop through every site in your blocklist.
     for (const siteToBlock of blockList) {
-      // Check if the current website's hostname includes the one from your list.
-  
       if (hostname.includes(siteToBlock)) {
         
-        // If we find a match, inject and run our showAlert function on that tab.
-        chrome.scripting.executeScript({
-          target: { tabId: tabId }, 
-          function: showAlert       
+    
+        // Native Chrome notification instead of like "youtube says"
+        chrome.notifications.create({
+          type: "basic",
+          iconUrl: "icon48.png", // Or icon128.png
+          title: "MindfulMelon", 
+          message: "This site is distracting and will harm your plant's growth!"
         });
         
-        // Once we find a match, we can stop checking the rest of the list.
         break; 
       }
     }
