@@ -102,6 +102,9 @@ function showAlert() {
   alert("This site is distracting and will harm your plant's growth! Get back to work!");
 }
 
+
+
+
 // This code runs every single time a tab is updated in any way.
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
