@@ -1,4 +1,11 @@
 
+const ICONS = {
+  happy:    { "16": "Images/HappyMelon.png" },
+  sick:     { "16": "Images/SickMelon.PNG" },
+  decaying: { "16": "Images/DecayingMelon.PNG" },
+  dead:     { "16": "Images/DeadMelon.PNG" }
+};
+
 async function ensureOffscreenDocument() {
   const exists = await chrome.offscreen.hasDocument();
   if (!exists) {
@@ -9,6 +16,72 @@ async function ensureOffscreenDocument() {
     });
   }
 }
+
+chrome.runtime.onInstalled.addListener(async () => {
+  const defaults = {
+    blockList: [],
+    warnings: 0,
+    sessionWarnings: 0,
+    sessionCount: 0,
+    inSession: false,
+    lastSessionCompleted: false,
+    melonDead: false,
+    isMusicPlaying: false
+  };
+
+  function updateIcon(warnings) {
+  if (warnings >= 4) chrome.action.setIcon({ path: ICONS.dead });
+  else if (warnings === 3) chrome.action.setIcon({ path: ICONS.decaying });
+  else if (warnings === 2) chrome.action.setIcon({ path: ICONS.sick });
+  else chrome.action.setIcon({ path: ICONS.happy });
+}
+
+chrome.runtime.onInstalled.addListener(async () => {
+  const defaults = {
+    warnings: 0,
+    sessionWarnings: 0,
+    sessionCount: 0,
+    inSession: false,
+    lastSessionCompleted: false,
+    melonDead: false,
+  };
+
+  const current = await chrome.storage.local.get(Object.keys(defaults));
+  const toSet = {};
+  for (const key in defaults) {
+    if (typeof current[key] === "undefined") toSet[key] = defaults[key];
+  }
+  if (Object.keys(toSet).length) await chrome.storage.local.set(toSet);
+
+  const { warnings } = await chrome.storage.local.get(["warnings"]);
+  updateIcon(warnings || 0);
+});
+
+
+
+function updateIcon(warnings) {
+  if (warnings >= 4) chrome.action.setIcon({ path: ICONS.dead });
+  else if (warnings === 3) chrome.action.setIcon({ path: ICONS.decaying });
+  else if (warnings === 2) chrome.action.setIcon({ path: ICONS.sick });
+  else chrome.action.setIcon({ path: ICONS.happy });
+}
+
+
+
+
+
+  const current = await chrome.storage.local.get(Object.keys(defaults));
+  const toSet = {};
+  for (const key in defaults) {
+    if (typeof current[key] === "undefined") toSet[key] = defaults[key];
+  }
+  if (Object.keys(toSet).length) await chrome.storage.local.set(toSet);
+
+  const { warnings } = await chrome.storage.local.get(["warnings"]);
+  updateIcon(warnings || 0);
+});
+
+
 
 chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
   if (msg.type === "popup-toggle") {

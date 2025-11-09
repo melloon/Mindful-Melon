@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Study Session - Mindful Melon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image: url("Images/SunnyBackground.png");
+      background-size: cover;
+      background-position: center;
+      color: #054407;
+      padding-top: 40px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.85);
+      display: inline-block;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="number"] {
+      width: 80px;
+      text-align: center;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #timer {
+      font-size: 48px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #333;
+    }
+
+    button {
+      padding: 10px 16px;
+      margin: 6px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: none;
+      background-color: #054407;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #status {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h2>Start a Study Session</h2>
+
+    <div>
+      Focus (minutes):
+      <input id="focusMins" type="number" value="25" min="1" />
+      &nbsp;&nbsp; Break (minutes):
+      <input id="breakMins" type="number" value="5" min="1" />
+    </div>
+
+    <div id="timer">00:00</div>
+
+    <div>
+      <button id="startBtn">Start</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <div id="status">Idle</div>
+    <div id="sessionInfo"></div>
+  </div>
+
+  <script src="Study.js"></script>
+</body>
+</html>
