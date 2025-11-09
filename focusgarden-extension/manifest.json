@@ -20,10 +20,13 @@
   "permissions": [
     "storage",
     "alarms",
-    "offscreen"
+    "offscreen",
+    "tabs",
+    "scripting"
   ],
   "host_permissions": [
-    "https://zenquotes.io/*"
+    "https://zenquotes.io/*",
+    "<all_urls>"
   ],
   "background": {
     "service_worker": "background.js"
