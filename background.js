@@ -1,6 +1,7 @@
 let timerSeconds = 60; // default
 let timerInterval = null;
 let paused = false;
+let streak = 0;
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.local.set({ timerSeconds, paused });
@@ -17,7 +18,7 @@ function startTimer(totalSeconds) {
     if (typeof totalSeconds === "number" && totalSeconds > 0) {
         timerSeconds = totalSeconds;
     } else if (timerSeconds <= 0) {
-        timerSeconds = 60; // reset to default if invalid
+        timerSeconds = 60; // reset to default when timer is completed
     }
 
     paused = false;
@@ -30,6 +31,8 @@ function startTimer(totalSeconds) {
         } else if (timerSeconds <= 0) {
             clearInterval(timerInterval);
             timerInterval = null;
+            streak++; // increment streak on restart after completion
+            console.log(`Streak incremented to: ${streak}`);
         }
     }, 1000);
 }
