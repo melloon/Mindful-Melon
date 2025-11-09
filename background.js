@@ -16,6 +16,8 @@ function startTimer(totalSeconds) {
 
     if (typeof totalSeconds === "number" && totalSeconds > 0) {
         timerSeconds = totalSeconds;
+    } else if (timerSeconds <= 0) {
+        timerSeconds = 60; // reset to default if invalid
     }
 
     paused = false;
