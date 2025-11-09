@@ -65,28 +65,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 800);
     });
 
-    // --- Water Button ---
+    
     waterBtn.addEventListener("click", async () => {
-        const { melonDead, lastSessionCompleted } = await chrome.storage.local.get([
-            "melonDead",
-            "lastSessionCompleted"
-        ]);
+        const { melonDead } = await chrome.storage.local.get("melonDead");
         if (melonDead) return;
-        if (!lastSessionCompleted) {
-            alert("You can only water the melon after finishing a study session!");
-            return;
-        }
 
-        // Temporarily switch to "watered" image (replace filename when you add it)
-        melonImg.src = "Images/Untitled147_20251108172805swing.png"; // <- new image you'll add
-
-        setTimeout(async () => {
-            await chrome.storage.local.set({ lastSessionCompleted: false });
+        const original = melonImg.src;
+        melonImg.src = "Images/WateredMelon.png"; 
+        setTimeout(() => {
             refreshState();
-        }, 1000);
+        }, 800);
     });
 
-    // --- Listen for updates from background.js ---
+ 
     chrome.runtime.onMessage.addListener((msg) => {
         if (
             ["warnings-updated", "melon-dead", "session-finished", "session-started"].includes(
@@ -97,6 +88,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // Initial setup
     refreshState();
 });
