@@ -1,15 +1,116 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Image with JavaScript</title>
+  <link rel="stylesheet" href="button.css">
+  <style>
+    body {
+      width: 700px;
+      height: 575px;
+      text-align: center;
+      background-image: url("Images/GardenBackground.png");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    img {
+      margin-top: 40px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    .back-btn {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      background-color: #054407;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1em;
+    }
+
+    .back-btn:hover {
+      background-color: #45a049;
+    }
+
+
+    /* .waterBtn {
+      width: 50px;
+      height: 50px;
+      padding: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+      top: 20px;  
+    } */
+
+    .waterBtn {
+      width: 125px;
+      height: 125px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background-image: url("Images/WaterButton.png");
+    
+      background-size:contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+     
+      bottom: 20px;
+     
+      left: 20px;
+     
+      transition: filter 0.3s;
+    }
+
+    .waterBtn:hover {
+      filter: brightness(1.2);
+    }
+
+    .petBtn {
+      width: 125px;
+      height: 125px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background-image: url("Images/PetButton.png");
+      background-size:contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      transition: filter 0.3s;
+    }
+
+    .petBtn:hover {
+      filter: brightness(1.2);
+    }
+
+  </style>
 </head>
+
 <body>
-    <div id="imageContainer">
+
+  <a href="MainMenu.html">
+    <button type="button" class="back-btn">Back</button>
+  </a>
+
+  <div id="imageContainer">
         <!-- The image will be added here by JavaScript -->
-    </div>
+  </div>
     <script>
         studytime = 
         time = studytime/tabtimetracker;
@@ -34,48 +135,18 @@
 
 
         </script>
-  
-    <button class= "petmelon" id="petmelonBtn" onclick="pet=true;">Pet</button>
+
+  <div id="waterButton" class="waterBtn"></div>
+  <button class="waterBtn" id="waterBtn" onclick="water=true;">Water</button>
     <script> 
          
-        const petmelon = document.getElementById("petmelonBtn");
+        const waterBtn = document.getElementById("waterBtn");
 
         function updateButtonState() {
             if (melonstate == 0) { 
-                petmelon.disabled = true;
+                waterBtn.disabled = true;
             } else {
-                petmelon.disabled = false;
-            }
-        }
-        melonstate.eventListener('melonstate', updateButtonState);
-        updateButtonState();
-    </script>
-    <script>
-    
-        if (pet == true){
-            if (time >= .90){
-                return healthypetImage;
-            }
-            else if (time > .70){
-                return sickpetImage;
-            }
-            else if (time > .50){
-                return semideadpetImage;
-            }
-        }
-         
-    </script>
-    
-    <button class="watermelon" id="watermelonBtn" onclick="water=true;">Water</button>
-    <script> 
-         
-        const watermelon = document.getElementById("watermelonBtn");
-
-        function updateButtonState() {
-            if (melonstate == 0) { 
-                watermelon.disabled = true;
-            } else {
-                watermelon.disabled = false;
+                waterBtn.disabled = false;
             }
         }
         melonstate.eventListener('melonstate', updateButtonState);
@@ -95,8 +166,38 @@
             
         }
     </script>
+  <div id="petButton" class="petBtn"></div>
+  <button class= "petButton" id="petBtn" onclick="pet=true;">Pet</button>
+    <script> 
+         
+        const petBtn = document.getElementById("petBtn");
+
+        function updateButtonState() {
+            if (melonstate == 0) { 
+                petBtn.disabled = true;
+            } else {
+                petBtn.disabled = false;
+            }
+        }
+        melonstate.eventListener('melonstate', updateButtonState);
+        updateButtonState();
     
-    <script>
+        if (pet == true){
+            if (time >= .90){
+                return healthypetImage;
+            }
+            else if (time > .70){
+                return sickpetImage;
+            }
+            else if (time > .50){
+                return semideadpetImage;
+            }
+        }
+         
+    </script>
+  <script src="buttons.js"></script>
+
+  <script>
       
         const dead = document.createElement('deadimg');
         deadimage.src = 'location';
@@ -162,6 +263,6 @@
     </script>
 
 
-
 </body>
+
 </html>
