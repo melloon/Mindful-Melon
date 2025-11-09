@@ -2,11 +2,7 @@
 async function ensureOffscreenDocument() {
   const exists = await chrome.offscreen.hasDocument();
   if (!exists) {
-    await chrome.offscreen.createDocument({
-      url: "offscreen.html",
-      reasons: ["AUDIO_PLAYBACK"],
-      justification: "Play lofi audio in background"
-    });
+    console.warn("Offscreen API unavailable; skipping offscreen audio setup.");
   }
 }
 
@@ -50,4 +46,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       }
     }
   }
+
+  console.log('Context:', chrome.runtime.getManifest().manifest_version);
+console.log('Notifications available:', !!chrome.notifications);
 });

@@ -13,9 +13,9 @@
         "128": "Images/Mindful Melon.png"
     },
     "permissions": [
+        "notifications",
         "storage",
         "offscreen",
-        "alarms",
         "tabs",
         "scripting"
     ],
