@@ -32,22 +32,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         else if (warnings === 2) melonImg.src = "Images/SickMelonswing.PNG";
         else melonImg.src = "Images/HappyMelonswing.png";
 
-        // Water only allowed if last session completed and melon alive
-        if (melonDead || inSession || !lastSessionCompleted) {
-            waterBtn.style.opacity = 0.5;
-            waterBtn.style.pointerEvents = "none";
-        } else {
-            waterBtn.style.opacity = 1;
-            waterBtn.style.pointerEvents = "auto";
-        }
-
+      
         // Pet always allowed if melon alive
         if (melonDead) {
             petBtn.style.opacity = 0.5;
             petBtn.style.pointerEvents = "none";
+            waterBtn.style.opacity = 0.5;
+            waterBtn.style.pointerEvents = "none";
         } else {
             petBtn.style.opacity = 1;
             petBtn.style.pointerEvents = "auto";
+              waterBtn.style.opacity = 1;
+            waterBtn.style.pointerEvents = "auto";
         }
     }
 
@@ -71,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (melonDead) return;
 
         const original = melonImg.src;
-        melonImg.src = "Images/WateredMelon.png"; 
+        melonImg.src = "Images/WateredMelon.pngImages/Untitled147_20251108172805swing.png"; 
         setTimeout(() => {
             refreshState();
         }, 800);
