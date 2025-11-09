@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Image with JavaScript</title>
+</head>
+<body>
+    <div id="imageContainer">
+        <!-- The image will be added here by JavaScript -->
+    </div>
+    <script>
+        time = animationTime % 1.0;
+        if (time <= .50){
+            return deadImage;
+        }
+        else if (time < .70){
+            return sickImage;
+        }
+        else if (time < .90){
+            return semideadImage;
+        }
+        else {
+            return healthyImage;
+        }
+
+    </script>
+    
+    <script>
+      
+        const dead = document.createElement('deadimg');
+        deadimage.src = 'location';
+
+        deadimage.alt = 'dead melon';
+        const container = document.getElementById('imageContainer');
+        container.appendChild(deadImage);
+
+        const healthy = document.createElement('healthyimg');
+        healthyimage.src = 'location';
+
+        healthyimage.alt = 'healthy melon';
+        container.appendChild(healthyImage);
+        
+        const semideadImage = document.createElement('semideadimg');
+        semidead.src = 'location';
+
+        semidead.alt = 'semidead melon';
+        container.appendChild(semideadImage);
+
+        const sickImage = document.createElement('sickimg');
+        sickimage.src = 'location';
+
+        sickimage.alt = 'sick melon';
+        container.appendChild(sickImage);
+    </script>
+
+
+
+</body>
+</html>
