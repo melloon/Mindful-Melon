@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Timer</title>
+        <style>
+            body { font-family: Arial, sans-serif; padding: 20px; width:200px; text-align: center;}
+            #timer { font-size: 28px; margin-bottom: 8px; }
+            button { margin-right: 6px; margin-top: 6px; }
+        </style>     
+    </head>
+    <body>
+
+        <button id="toggleMusic">🎵 Chill Vibes</button>
+
+        <script src="Mainmenu.js"></script>
+        
+        <label>
+            Minutes:
+            <input type="number" id="minutesInput" value="1" min="1" />
+        </label>
+        <div id="timerDisplay">Loading!</div>
+        <div>
+            <button id="startButton">Start</button>
+            <button id="pauseButton">Pause</button>
+            <button id="resumeButton">Resume</button>
+        </div>
+        <script src="popup.js"></script>
+    </body>
+</html>
