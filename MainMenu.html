@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Main Menu</title>
@@ -31,7 +32,8 @@
     }
 
     .btn-group {
-      display: grid;              /* changed only for 2x2 layout */
+      display: grid;
+      /* changed only for 2x2 layout */
       grid-template-columns: 1fr 1fr;
       gap: 50px;
       justify-content: center;
@@ -86,12 +88,12 @@
   <div class="btn-group">
 
     <button type="button" class="garden-btn">Garden</button>
-    <script>
-      const gardenBtn = document.getElementById("gardenBtn");
-      gardenBtn.addEventListener("click", function(e){
-        window.location.href = "Garden.html";
-      });
-    </script>
+      <script>
+        const gardenBtn = document.getElementById("gardenBtn");
+        gardenBtn.addEventListener("click", function (e) {
+          window.location.href = "garden.html";
+        });
+      </script>
 
     <button type="button" class="startstudying-btn">Study Session</button>
     <button type="button" class="streak-btn">Streak</button>
