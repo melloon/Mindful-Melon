@@ -27,18 +27,18 @@ Go to chrome://extensions/.
 Turn on Developer Mode.
 Click Load unpacked and select this project folder.
 
-### 🧩 Tech Stack
+### 👾 Tech Stack
 
 HTML, CSS, JavaScript
 Chrome Extension APIs (storage, tabs, background scripts, etc.)
 Audio and timer functionalities
 
-### 💡 About
+### ❓ About
 
 Mindful Melon was created to make studying feel calm and intentional.
 Our team combined soft visuals, lo-fi music, and a virtual melon pet whose wellbeing reflects your focus.
 By blacklisting distracting sites and maintaining consistent study sessions, users build mindfulness and discipline in a gentle, rewarding way.
 
-### 👩‍💻 Created By
+### ❗ Created By
 
 Olivia Stewart, James Sigler, Donavan Heggs, Evelyn Hale, and Njeri Dukes
