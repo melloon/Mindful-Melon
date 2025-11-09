@@ -30,7 +30,7 @@
   },
    "web_accessible_resources": [
     {
-      "resources": ["lofi.mp3"],
+      "resources": ["music/*.mp3"],
       "matches": ["<all_urls>"]
     }
    ]
