@@ -17,7 +17,12 @@
         "offscreen",
         "alarms",
         "tabs",
+        "notifications",
         "scripting"
+    ],
+    "host_permissions": [
+    "https://zenquotes.io/*",
+    "<all_urls>"
     ],
     "background": {
         "service_worker": "background.js"
