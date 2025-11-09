@@ -17,6 +17,7 @@
         "offscreen",
         "alarms",
         "tabs",
+        "notifications",
         "scripting"
     ],
     "host_permissions": [
