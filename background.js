@@ -100,6 +100,10 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
 // End of Music
 
 
+
+
+
+// This code runs every single time a tab is updated in any way.
 // Notis
 chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
