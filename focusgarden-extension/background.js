@@ -11,13 +11,17 @@ async function ensureOffscreenDocument() {
 
 // listen for toggleMusic from popup
 chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
-  if (msg.type === "toggleMusic") {
+  if (msg.type === "popup-toggle") {
     await ensureOffscreenDocument();
 
-    // forward the message to the offscreen document
-    const offscreenId = await chrome.offscreen.getDocument(); // gets the offscreen doc
-    chrome.runtime.sendMessage({ type: "toggleMusic" });
-    sendResponse({ success: true });
+    chrome.runtime.sendMessage({ type: "offscreen-toggle"});
+    sendResponse({ success: true});
   }
+
+if (msg.type === "music-state-changed") {
+    console.log("Saving music state:", msg.isPlaying);
+    await chrome.storage.local.set({ isMusicPlaying: msg.isPlaying });
+}
+  
   return true; // keep port open for async response
 });
