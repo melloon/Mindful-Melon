@@ -43,7 +43,7 @@
             console.log("✅ FCM Token:", currentToken);
 
             // Send token to your server
-            await fetch("save_token.php", {
+            await fetch("send.php", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ token: currentToken }),
