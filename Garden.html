@@ -1,55 +1,122 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" href="..\btn.css">
-    <style>
-        body {
-            width: 700px;
-            height: 575px;
-            text-align: center;
-            background-image: url("Images/GardenBackground.png");
-            background-size: cover;
-            background-position: center;
-        }
-        img {
-            margin-top: 40px;
-        }
+  <link rel="stylesheet" href="button.css">
+  <style>
+    body {
+      width: 700px;
+      height: 575px;
+      text-align: center;
+      background-image: url("Images/GardenBackground.png");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
 
-                a {
-            text-decoration: none; 
-        }
+    img {
+      margin-top: 40px;
+    }
 
-   
-        .back-btn {
-            width: 40px;
-            height: 40px;
-            padding: 0;
-            border-radius: 50%;
-            background-color: #054407;
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1em;
-        }
+    a {
+      text-decoration: none;
+    }
 
-        .back-btn:hover {
-            background-color: #45a049;
-        }
 
-    </style>
+    .back-btn {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      background-color: #054407;
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1em;
+    }
+
+    .back-btn:hover {
+      background-color: #45a049;
+    }
+
+
+    /* .waterBtn {
+      width: 50px;
+      height: 50px;
+      padding: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+      top: 20px;  
+    } */
+
+    .waterBtn {
+      width: 125px;
+      height: 125px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background-image: url("Images/WaterButton.png");
+    
+      background-size:contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+     
+      bottom: 20px;
+     
+      left: 20px;
+     
+      transition: filter 0.3s;
+    }
+
+    .waterBtn:hover {
+      filter: brightness(1.2);
+    }
+
+    .petBtn {
+      width: 125px;
+      height: 125px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background-image: url("Images/WaterButton.png");
+      /* Your image */
+      background-size:contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      /* so it can be placed at the bottom-left */
+      bottom: 20px;
+      /* distance from the bottom */
+      right: 20px;
+      /* distance from the left */
+      transition: filter 0.3s;
+    }
+
+    .petBtn:hover {
+      filter: brightness(1.2);
+    }
+
+  </style>
 </head>
+
 <body>
 
-    <a href="MainMenu.html">
+  <a href="MainMenu.html">
+    <button type="button" class="back-btn">Back</button>
+  </a>
 
-        <button type="button" class="back-btn">Back</button>
-    </a>
 
-       
-    
+  <div id="waterButton" class="waterBtn"></div>
+  <script src="buttons.js"></script>
+
+
 </body>
+
 </html>
