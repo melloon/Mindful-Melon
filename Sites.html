@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            width: 700px;
+            height: 575px;
+            text-align: center;
+            background-image: url("Images/SunnyBackground.png");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blocker {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        #site-input {
+            flex-grow: 1;
+        }
+
+        ul {
+            padding-left: 20px;
+            text-align: left;
+            margin: 5px 0 0 0;
+        }
+
+        li {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <h1 style="color: #054407;">Block Distracting Sites</h1>
+
+    <div class="blocker">
+        <input type="text" id="site-input" placeholder="e.g., youtube.com">
+        <button id="add-site-btn">Block</button>
+    </div>
+
+    <h2 style="color: #054407;">Your Blocklist:</h2>
+    <ul id="blocked-sites-list">
+    </ul>
+
+    <script src="Sites.js"></script>
+
+</body>
+
+</html>
