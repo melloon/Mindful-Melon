@@ -1,3 +1,4 @@
+
 {
   "manifest_version": 3,
   "name": "FocusGarden",
@@ -17,10 +18,22 @@
     }
   },
   "permissions": [
-    "storage"
+    "storage",
+    "alarms",
+    "offscreen"
   ],
   "host_permissions": [
     "https://zenquotes.io/*"
-  ]
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+   "web_accessible_resources": [
+    {
+      "resources": ["lofi.mp3"],
+      "matches": ["<all_urls>"]
+    }
+   ]
 }
+
 
