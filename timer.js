@@ -1,31 +1,38 @@
-const display = document.getElementById("timerDisplay");
+document.addEventListener("DOMContentLoaded", () => {
+    const display = document.getElementById("timerDisplay");
+    const minutesInput = document.getElementById("minutesInput");
 
-function updateDisplay(seconds) {
-  const minutes = Math.floor(seconds / 60);
-  const rem = seconds % 60;
-  display.textContent = `${minutes}:${rem.toString().padStart(2, "0")}`;
-}
+    // timer display update function
+    function updateDisplay(timerSeconds) {
+        if (!display) return; // safety guard
+        let minutes = Math.floor(timerSeconds / 60);
+        let seconds = timerSeconds % 60;
+        display.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    }
 
-// --- Button listeners ---
-document.getElementById("startButton").addEventListener("click", () => {
-  chrome.runtime.sendMessage({ action: "start" });
-});
+    // button listener functions
+    document.getElementById("startButton").addEventListener("click", () => {
+        const minutes = parseInt(minutesInput.value, 10);
+        const totalSeconds = minutes * 60;
+        chrome.runtime.sendMessage({ action: "start", totalSeconds });
+    });
 
-document.getElementById("pauseButton").addEventListener("click", () => {
-  chrome.runtime.sendMessage({ action: "pause" });
-});
+    document.getElementById("pauseButton").addEventListener("click", () => {
+        chrome.runtime.sendMessage({ action: "pause" });
+    });
 
-document.getElementById("resumeButton").addEventListener("click", () => {
-  chrome.runtime.sendMessage({ action: "resume" });
-});
+    document.getElementById("resumeButton").addEventListener("click", () => {
+        chrome.runtime.sendMessage({ action: "resume" });
+    });
 
-// --- Update timer display live ---
-chrome.storage.local.get("timerSeconds", (data) => {
-  if (data.timerSeconds !== undefined) updateDisplay(data.timerSeconds);
-});
+    // update display live
+    chrome.storage.local.get("timerSeconds", (data) => {
+        if (data.timerSeconds !== undefined) updateDisplay(data.timerSeconds);
+    });
 
-chrome.storage.onChanged.addListener((changes, area) => {
-  if (area === "local" && changes.timerSeconds) {
-    updateDisplay(changes.timerSeconds.newValue);
-  }
+    chrome.storage.onChanged.addListener((changes, area) => {
+        if (area === "local" && changes.timerSeconds) {
+        updateDisplay(changes.timerSeconds.newValue);
+        }
+    });
 });
