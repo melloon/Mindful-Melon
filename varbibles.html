@@ -24,7 +24,41 @@
         else {
             return healthyImage;
         }
-
+        </script>
+    <button onclick="pet=true;">Pet</button>
+    <script>
+    
+        if (pet == true){
+            if (time <= .50){
+                return healthypetImage;
+            }
+            else if (time < .70){
+                return semideadpetImage;
+            }
+            else if (time < .90){
+                return sickpetImage;
+            }
+            else {
+                return deadpetImage;
+            }
+        }
+    </script>
+    <button onclick="water=true;">Water</button>
+    <script>    
+        if (water == true){
+            if (time <= .50){
+                return healthywaterImage;
+            }
+            else if (time < .70){
+                return semideadwaterImage;
+            }
+            else if (time < .90){
+                return sickwaterImage;
+            }
+            else {
+                return deadwaterImage;
+            }
+        }
     </script>
     
     <script>
@@ -53,6 +87,55 @@
 
         sickimage.alt = 'sick melon';
         container.appendChild(sickImage);
+
+        const sickpetImage = document.createElement('sickpetimg');
+        sickpetimage.src = 'location';
+
+        sickpetimage.alt = 'pet sick melon';
+        container.appendChild(sickpetImage);
+
+        const semideadpetImage = document.createElement('semideadpetimg');
+        semideadpetimage.src = 'location';
+
+        semideadimage.alt = 'pet semi dead melon';
+        container.appendChild(semideadImage);
+
+        const healthypetImage = document.createElement('healthypetimg');
+        healthypetimage.src = 'location';
+
+        healthypetImage.alt = 'pet healthy melon';
+        container.appendChild(healthypetImage);
+
+        const deadpetImage = document.createElement('deadpetimg');
+        deadpetimage.src = 'location';
+
+        deadpetimage.alt = 'pet dead melon';
+        container.appendChild(deadpetImage);
+
+        const deadwaterImage = document.createElement('deadwaterimg');
+        deadwatertimage.src = 'location';
+
+        deadwaterimage.alt = 'water dead melon';
+        container.appendChild(deadwaterImage);
+
+        const semideadwaterImage = document.createElement('semideadwaterimg');
+        semideadwatertimage.src = 'location';
+
+        semideadwaterimage.alt = 'water semi dead melon';
+        container.appendChild(semideadwaterImage);
+
+         const sickwaterImage = document.createElement('sickwaterimg');
+        sickwatertimage.src = 'location';
+
+        sickwaterimage.alt = 'water sick melon';
+        container.appendChild(sickwaterImage);
+
+        const healthywaterImage = document.createElement('healthywaterimg');
+        healthywatertimage.src = 'location';
+
+        healthywaterimage.alt = 'water healthy melon';
+        container.appendChild(healthywaterImage);
+
     </script>
 
 
