@@ -12,52 +12,86 @@
     </div>
     <script>
         time = animationTime % 1.0;
+        water = false;
+         pet = false;
         if (time <= .50){
+            melonstate = 0;
             return deadImage;
         }
         else if (time < .70){
-            return sickImage;
-        }
-        else if (time < .90){
+            melonstate = 1;
             return semideadImage;
         }
+        else if (time < .90){
+            melonstate = 2;
+            return sickImage;
+        }
         else {
+            melonstate = 3;
             return healthyImage;
         }
+
+
         </script>
-    <button class= "pet-melon" id="petmelonBtn" onclick="pet=true;">Pet</button>
+  
+    <button class= "petmelon" id="petmelonBtn" onclick="pet=true;">Pet</button>
+    <script> 
+         
+        const petmelon = document.getElementById("petmelonBtn");
+
+        function updateButtonState() {
+            if (melonstate == 0) { 
+                petmelon.disabled = true;
+            } else {
+                petmelon.disabled = false;
+            }
+        }
+        melonstate.eventListener('melonstate', updateButtonState);
+        updateButtonState();
+    </script>
     <script>
     
         if (pet == true){
-            if (time <= .50){
+            if (time >= .90){
                 return healthypetImage;
             }
-            else if (time < .70){
-                return semideadpetImage;
-            }
-            else if (time < .90){
+            else if (time > .70){
                 return sickpetImage;
             }
-            else {
-                return deadpetImage;
+            else if (time > .50){
+                return semideadpetImage;
             }
         }
+         
     </script>
-    <button class="water-melon" id="petmelonBtn" onclick="water=true;">Water</button>
+    
+    <button class="watermelon" id="watermelonBtn" onclick="water=true;">Water</button>
+    <script> 
+         
+        const watermelon = document.getElementById("watermelonBtn");
+
+        function updateButtonState() {
+            if (melonstate == 0) { 
+                watermelon.disabled = true;
+            } else {
+                watermelon.disabled = false;
+            }
+        }
+        melonstate.eventListener('melonstate', updateButtonState);
+        updateButtonState();
+    </script>
     <script>    
         if (water == true){
-            if (time <= .50){
+            if (time >= .90){
                 return healthywaterImage;
             }
-            else if (time < .70){
-                return semideadwaterImage;
-            }
-            else if (time < .90){
+            else if (time > .70){
                 return sickwaterImage;
             }
-            else {
-                return deadwaterImage;
+            else if (time > .50){
+                return semideadwaterImage;
             }
+            
         }
     </script>
     
