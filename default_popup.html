@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,15 @@
   <link rel="stylesheet" href="..\btn.css">
 
   <style>
+    /* --- Your existing CSS (slightly adjusted) --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
+      background-color: #ffffff;
       width: 700px;
       height: 575px;
       text-align: center;
@@ -16,15 +23,55 @@
       background-position: center;
     }
 
-    .menu-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr; 
+    h1 {
+      color: #333;
+      font-size: 52px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .btn-group {
+      display: grid;              /* changed only for 2x2 layout */
+      grid-template-columns: 1fr 1fr;
       gap: 50px;
       justify-content: center;
       align-items: center;
       width: 60%;
-      margin: 0 auto;
-      margin-top: 40px;
+      margin: 40px auto 0 auto;
+    }
+
+    .fiffteen-btn,
+    .tty-btn,
+    .ftyf-btn,
+    .sty-btn,
+    .five-btn,
+    .ten-btn,
+    .fifteen-btn,
+    .enable-btn,
+    .garden-btn,
+    .startstudying-btn {
+      width: 100%;
+      padding: 20px;
+      background-color: #054407;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    .fiffteen-btn:hover,
+    .tty-btn:hover,
+    .ftyf-btn:hover,
+    .sty-btn:hover,
+    .five-btn:hover,
+    .ten-btn:hover,
+    .fifteen-btn:hover,
+    .enable-btn:hover,
+    .garden-btn:hover,
+    .startstudying-btn:hover {
+      background-color: #45a049;
     }
 
     img {
@@ -34,9 +81,9 @@
 </head>
 
 <body>
-  <img src="Images/Mindful Melon(Popup) (2).png" alt="The Logo" width="350" height="307">
+  <img src="Images/Mindful Melon(Popup) (2).png" alt="The baby melon" width="350" height="307">
 
-  <div class="menu-container">
+  <div class="btn-group">
     <button type="button" class="garden-btn">Garden</button>
     <button type="button" class="startstudying-btn">Study Session</button>
     <button type="button" class="fiffteen-btn">Points</button>
