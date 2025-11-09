@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+     <title>FocusGarden</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        width: 250px;
+        text-align: center;
+        padding: 10px;
+      }
+
+      #quote {
+        font-size: 16px;
+        font-weight: normal;
+        margin-bottom: 10px;
+      }
+
+      #toggleMusic {
+        margin-top: 10px;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .blocker {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+      #site-input {
+        flex-grow: 1; 
+      }
+      ul {
+        padding-left: 20px;
+        text-align: left;
+        margin: 5px 0 0 0;
+      }
+      li {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="quote">Loading...</h1>
+    
+    <button id="toggleMusic">🎵 Chill Vibes</button>
+
+    <hr> 
+    <h3>Block Distracting Sites</h3>
+    
+    <div class="blocker">
+      <input type="text" id="site-input" placeholder="e.g., youtube.com">
+      <button id="add-site-btn">Block</button>
+    </div>
+    
+    <h4>Your Blocklist:</h4>
+    <ul id="blocked-sites-list">
+      </ul>
+
+    <script src="popup.js"></script>
+
+  </body>
+</html>

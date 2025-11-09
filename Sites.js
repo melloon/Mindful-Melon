@@ -1,0 +1,78 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+  
+//Quotes
+  const quoteElement = document.querySelector("h1"); 
+
+  fetch("https://zenquotes.io/api/random")
+    .then(res => res.json())
+    .then(data => {
+      const quote = data[0].q;
+      const author = data[0].a;
+      quoteElement.innerText = `"${quote}" - ${author}`;
+    })
+    .catch(() => {
+      quoteElement.innerText = '"Stay focused. You got this."';
+    });
+  
+  const siteInput = document.getElementById("site-input");
+  const addSiteBtn = document.getElementById("add-site-btn");
+  const blockedSitesList = document.getElementById("blocked-sites-list");
+
+  loadAndDisplayBlocklist();
+
+  addSiteBtn.addEventListener("click", async () => {
+    const site = siteInput.value;
+    if (site) {
+      const result = await chrome.storage.local.get(["blockList"]);
+      const blockList = result.blockList || [];
+      const formattedSite = site.replace("https", "").replace("http://", "").replace("www.", "").split('/')[0];
+
+      if (formattedSite && !blockList.includes(formattedSite)) {
+        blockList.push(formattedSite);
+        await chrome.storage.local.set({ blockList: blockList });
+        siteInput.value = "";
+        loadAndDisplayBlocklist();
+      }
+    }
+  });
+
+  async function loadAndDisplayBlocklist() {
+    const result = await chrome.storage.local.get(["blockList"]);
+    const blockList = result.blockList || [];
+    
+    blockedSitesList.innerHTML = "";
+    
+    // Add each site to list 
+    blockList.forEach(site => {
+      const li = document.createElement("li");
+      li.textContent = site;
+
+      // "Remove" Button
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "Remove";
+      removeBtn.style.marginLeft = "10px"; // Adds some space
+      removeBtn.dataset.site = site; // Store the site name on the button
+
+      // Add a click listener for the new remove button
+      removeBtn.addEventListener("click", async (e) => {
+        const siteToRemove = e.target.dataset.site;
+        
+        // Get the current list
+        const result = await chrome.storage.local.get(["blockList"]);
+        const currentList = result.blockList || [];
+  
+        const newList = currentList.filter(s => s !== siteToRemove);
+        
+        // Save list in storage
+        await chrome.storage.local.set({ blockList: newList });
+        
+        loadAndDisplayBlocklist();
+      });
+
+      li.appendChild(removeBtn); 
+
+      blockedSitesList.appendChild(li);
+    });
+  }
+});

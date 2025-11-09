@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Main Menu</title>
+  <link rel="stylesheet" href="..\btn.css">
+
+  <style>
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #ffffff;
+      width: 700px;
+      height: 575px;
+      text-align: center;
+      background-image: url("Images/SunnyBackground.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 52px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #toggleMusic {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 16px;
+      background-color: #054407;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    #toggleMusic:hover {
+      background-color: #45a049;
+    }
+
+    .btn-group {
+      display: grid;
+      /* changed only for 2x2 layout */
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      justify-content: center;
+      align-items: center;
+      width: 60%;
+      margin: 40px auto 0 auto;
+    }
+
+    .streak-btn,
+    .tty-btn,
+    .ftyf-btn,
+    .sty-btn,
+    .five-btn,
+    .ten-btn,
+    .fifteen-btn,
+    .enable-btn,
+    .garden-btn,
+    .startstudying-btn {
+      width: 100%;
+      padding: 20px;
+      background-color: #054407;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    .streak-btn:hover,
+    .tty-btn:hover,
+    .ftyf-btn:hover,
+    .sty-btn:hover,
+    .five-btn:hover,
+    .ten-btn:hover,
+    .fifteen-btn:hover,
+    .enable-btn:hover,
+    .garden-btn:hover,
+    .startstudying-btn:hover {
+      background-color: #45a049;
+    }
+
+    img {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="toggleMusic">🎵 Chill Vibes</button>
+
+  <script src="Mainmenu.js"></script>
+
+  <img src="Images/Mindful Melon(Popup) (2).png" alt="The baby melon" width="350" height="307">
+
+
+
+
+  <div class="btn-group">
+    <a href="Garden.html">
+      <button type="button" class="garden-btn">Garden</button>
+    </a>
+    <a href="StudySession.html">
+      <button type="button" class="startstudying-btn">Study Session</button>
+    </a>
+    <a href="Streak.html">
+      <button type="button" class="streak-btn">Streak</button>
+    </a>
+    <a href="Sites.html">
+      <button type="button" class="enable-btn">Block Sites</button>
+    </a>
+  </div>
+
+
+
+
+</body>
+
+</html>
