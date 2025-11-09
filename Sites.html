@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <style>
         body {
             width: 700px;
@@ -33,27 +34,23 @@
         li {
             font-size: 14px;
         }
-
-        h1, h2 {
-            color: #054407;
-        }
     </style>
 </head>
 
 <body>
-    <hr>
-    <h1>Enabled Sites</h3>
+    
+    <h1 style="color: #054407;">Block Distracting Sites</h1>
 
-        <div class="blocker">
-            <input type="text" id="site-input" placeholder="e.g., https://moodle.lsu.edu/">
-            <button id="add-site-btn">Block</button>
-        </div>
+    <div class="blocker">
+        <input type="text" id="site-input" placeholder="e.g., youtube.com">
+        <button id="add-site-btn">Block</button>
+    </div>
 
-        <h2>Your Enabled Sites list:</h4>
-            <ul id="blocked-sites-list">
-            </ul>
+    <h2 style="color: #054407;">Your Blocklist:</h2>
+    <ul id="blocked-sites-list">
+    </ul>
 
-            <script src="popup.js"></script>
+    <script src="Sites.js"></script>
 
 </body>
 
